@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alura.MsBuild.Modelos;
+using Alura.MsBuild.Relatorios;
 
 namespace Alura.MsBuild.Tarefas
 {
@@ -34,12 +35,12 @@ namespace Alura.MsBuild.Tarefas
 				new Tarefa("Pagar Internet", financas, DateTime.Now.AddDays(15)),
 			};
 			
-			var relatorio = tarefas.GroupBy(t => t.Categoria.Descricao);
+			var relatorio = new RelatorioDePendencias(tarefas);
 			
-			foreach(var categ in relatorio)
+			foreach(var categ in relatorio.TarefasPendentes)
 			{
-				Console.WriteLine("\n" + categ.Key);
-				foreach(var tarefa in categ.OrderBy(t => t.DiasParaSerConcluida))
+				Console.WriteLine("\n" + categ.Key.Descricao);
+				foreach(var tarefa in categ)
 				{
 					Console.WriteLine(tarefa);
 				}
