@@ -11,7 +11,7 @@ namespace Alura.Financas.ConsoleApp
 			var conta = new Conta("2890-13", cliente);
 			conta.Deposita(200);
 			conta.Saca(50);
-			conta.Deposita(500);
+			conta.Deposita(800);
 			conta.Saca(400);
 			Console.WriteLine(conta.Saldo);
 		}
